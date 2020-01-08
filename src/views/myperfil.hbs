@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<div class="card mb-3i mx-auto"style="max-width: 540px;">
+  {{#each profile}}
+  <div class="row no-gutters mx-auto">
+    <div class="col-md-4 mx-auto">
+            <img src="{{path}}"class="card-img"alt="{{filename}}">
+    </div>
+    <div class="col-md-8 mx-auto">
+      <div class="card-body mx-auto">
+        <h3 class="card-title">Tu Perfil</h3>
+        <p class="card-text">Tu Nombre: {{name}}</p>
+        <p class="card-text">Tu Religion: {{religion}}</p>
+        <p class="card-text">Tu Persona Favorita: {{favorite}}</p>
+        <p class="card-text">Tu Edad: {{year}}</p>
+        <p class="card-text">Tu Te Describes: {{descript}}</p>
+        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+	 <form action="/delete/{{_id}}?_method=DELETE" method="POST">
+          <input type="hidden" name="_method" value="DELETE">
+          <button type="submit" class="btn btn-danger btn-block ">ELiminar</button>
+	 </form>
+	 <br><a class="btn btn-primary btn-block"href="/edit/{{id}}">Editar Perfil</a>
+      </div>
+    </div>
+  </div>
+  {{/each}}
+</div>
+

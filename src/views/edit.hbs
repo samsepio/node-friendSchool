@@ -1,21 +1,14 @@
 <!DOCTYPE html>
-{{#each errors}}
-  <div class="alert alert-danger alert-dismissible fade show" role="alert">
-    {{text}}
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>
-{{/each}}
 <div class="container p-4">
 			<div class="row">
 				<div class="col-md-4 offset-md-4">
 					<div class="card">
 						<div class="card-header text-center">
-							<h3>Sube Tu Imagen</h3>
+							<h3>Edita Tu Perfil</h3>
 						</div>
 						<div class="card-body">
-							<form action="/profile"method="POST"enctype="multipart/form-data">
+							<form action="/edit/{{dimages._id}}?_method=PUT"method="POST"enctype="multipart/form-data">
+								<input type="hidden" name="_method" value="PUT">
 								<div class="input-group mb-3">
 									<div class="custom-file">
 										<input type="file" name="image" class="custom-file-input" id="inputGroupFile02">
@@ -24,35 +17,35 @@
 								</div>
 								<div class="form-group">
 									<span id="errorB"></span>
-									<input type="text" name="title"id="titulo"placeholder="Titlulo" class="form-control">
+									<input type="text" name="title"id="titulo"placeholder="Titlulo" class="form-control"value="{{dimages.title}}">
 								</div>
 								<div class="form-group">
 									<span id="errorC"></span>
-									<textarea name="description"id="descripcion"placeholder="Descripcion" class="form-control"></textarea>
+									<textarea name="description"id="descripcion"placeholder="Descripcion" class="form-control">{{dimages.description}}</textarea>
 								</div>
-								 <div class="form-group">
+								<div class="form-group">
                                                                         <label>Nombre</label>
-                                                                        <input type="text"name="name"placeholder="Su Nombre"class="form-control">
-                                                                </div>
+									<input type="text"name="name"placeholder="Su nombre"class="form-control"value="{{dimages.name}}">
+								</div>
 								<div class="form-group">
 									<label>Edad</label>
-                                                                        <input type="number"name="year"placeholder="Su Edad"class="form-control">
+									<input type="number"name="year"placeholder="Su Edad"class="form-control"value="{{dimages.year}}">
                                                                 </div>
 								<div class="form-group">
 									<label>Religion</label>
-                                                                        <input type="text"name="religion"placeholder="Su Religion" class="form-control">
+									<input type="text"name="religion"placeholder="Su Religion" class="form-control"value="{{dimages.religion}}">
                                                                 </div>
 								 <div class="form-group">
 									 <label>Persona Favorita</label>
-                                                                        <input type="text"name="favorite"placeholder="Su Persona Favorita"class="form-control">
+									 <input type="text"name="favorite"placeholder="Su Persona Favorita"class="form-control"value="{{dimages.favorite}}">
                                                                 </div>
 								<div class="form-group">
                                                                         <label>Descripcion suya</label>
-									<textarea name="descript"placeholder="Como Se Describe"class="form-control"></textarea>
+									<textarea name="descript"placeholder="Como Se Describe"class="form-control">{{dimages.descript}}</textarea>
                                                                 </div>
 								<div class="form-group">
 									<button class="btn btn-success btn-block"id="subir">
-										Subir
+										Editar
 									</button>
 								</div>
 							</form>

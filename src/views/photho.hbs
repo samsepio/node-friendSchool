@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<div class="card mb-3i mx-auto"style="max-width: 540px;">
+  <div class="row no-gutters mx-auto">
+    <div class="col-md-4 mx-auto">
+	    <img src="{{image.path}}"class="card-img"alt="{{image.filename}}">
+	    <blockquote id="post-comment">
+                         <form action="/comentary/{{image._id}}"method="POST">
+                                 <div class="form-group">
+                                         <input type="email"class="form-control"name="email"placeholder="Email">
+                                 </div>
+                                 <div class="form-group">
+                                         <textarea name="comentary"class="form-control"rows="2"placeholder="Tu Comentario"></textarea>
+                                 </div>
+                                 <div class="form-group">
+                                         <button class="btn btn-success btn-block" id="btn-comment">
+                                                 <i class="fa fa-comment"></i>Comentar
+                                         </button>
+                                 </div>
+                         </form>
+                 </blockquote>
+    </div>
+    <div class="col-md-8 mx-auto">
+      <div class="card-body mx-auto">
+        <h3 class="card-title">Perfil</h3>
+	<p class="card-text">Nombre: {{image.name}}</p>
+	<p class="card-text">Religion: {{image.religion}}</p>
+	<p class="card-text">Persona Favorita: {{image.favorite}}</p>
+	<p class="card-text">Edad: {{image.year}}</p>
+	<p class="card-text">El Se Describe: {{image.descript}}</p>
+        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+	 <div class="card-body">
+      </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
