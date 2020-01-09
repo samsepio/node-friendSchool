@@ -40,10 +40,17 @@ router.post('/profile',async(req,res,next)=>{
 		res.redirect('/profiles');
 	}
 });
-router.post('/comentary/:id',async(req,res,next)=>{
-	const comment = new Comentary({email,comentary});
-	comment.user = req.user.id;
-	await comment.save();
+router.post('/comentary/:image_id',async(req,res,next)=>{
+	const image = await Image.findById(req.params.image_id);
+	if(image){
+		const comentary = new Comentary(req.body);
+		comentary.image_id = image._id;
+		await comentary.save();
+		console.log(comentary);
+		res.redirect('/img/'+comentary.image_id);
+	}else{
+		res.send('la imagen no se encontro');
+	}
 });
 router.get('/edit/:id',isAuthenticated,async(req,res,next)=>{
 	const {id} = req.params;
@@ -74,8 +81,8 @@ router.get('/myperfil',isAuthenticated,async(req,res,next)=>{
 router.get('/img/:id',isAuthenticated,async(req,res,next)=>{
 	const {id} = req.params;
 	const image = await Image.findById(id);
-	const comentarys = await Comentary.find({user: req.user.id});
-	res.render('photho',{image},{comentarys});
+	const comentary = await Comentary.find({image_id: id});
+	res.render('photho',{image,comentary});
 });
 router.get('/profiles',isAuthenticated,async(req,res,next)=>{
 	const images = await Image.find();
